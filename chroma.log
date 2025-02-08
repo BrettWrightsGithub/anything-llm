@@ -1,0 +1,22 @@
+[33mWARNING[0m:  [07-02-2025 21:38:08] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048575. chroma_server_nofile will not be set.
+[32mINFO[0m:     [07-02-2025 21:38:09] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [07-02-2025 21:38:09] Starting component System
+[36mDEBUG[0m:    [07-02-2025 21:38:09] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [07-02-2025 21:38:09] Starting component SimpleAssignmentPolicy
+[36mDEBUG[0m:    [07-02-2025 21:38:09] Starting component SqliteDB
+[36mDEBUG[0m:    [07-02-2025 21:38:09] Starting component Posthog
+[36mDEBUG[0m:    [07-02-2025 21:38:09] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [07-02-2025 21:38:09] Starting component SegmentAPI
+[32mINFO[0m:     [07-02-2025 21:38:09] Started server process [[36m72914[0m]
+[32mINFO[0m:     [07-02-2025 21:38:09] Waiting for application startup.
+[32mINFO[0m:     [07-02-2025 21:38:09] Application startup complete.
+[32mINFO[0m:     [07-02-2025 21:38:09] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [07-02-2025 21:38:15] ::1:49254 - "GET / HTTP/1.1" 404
+[32mINFO[0m:     [07-02-2025 21:38:15] ::1:49254 - "GET /favicon.ico HTTP/1.1" 404
+[32mINFO[0m:     [07-02-2025 21:38:37] ::1:49254 - "GET / HTTP/1.1" 404
+[32mINFO[0m:     [07-02-2025 21:38:53] ::1:49254 - "GET /docs HTTP/1.1" 200
+[32mINFO[0m:     [07-02-2025 21:38:54] ::1:49254 - "GET /openapi.json HTTP/1.1" 200
+[32mINFO[0m:     [07-02-2025 22:07:04] Shutting down
+[32mINFO[0m:     [07-02-2025 22:07:04] Waiting for application shutdown.
+[32mINFO[0m:     [07-02-2025 22:07:04] Application shutdown complete.
+[32mINFO[0m:     [07-02-2025 22:07:04] Finished server process [[36m72914[0m]
