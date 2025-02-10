@@ -1,0 +1,21 @@
+version: '3.9'
+
+networks:
+  chroma-net:
+    driver: bridge
+
+services:
+  chroma:
+    image: ghcr.io/chroma-core/chroma:latest
+    environment:
+      - IS_PERSISTENT=TRUE
+    volumes:
+      - chroma-data:/chroma/chroma/
+    ports:
+      - 8000:8000
+    networks:
+      - chroma-net
+
+volumes:
+  chroma-data:
+    driver: local
