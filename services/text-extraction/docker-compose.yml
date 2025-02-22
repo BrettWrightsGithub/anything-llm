@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  text-extraction-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3005:3000"  # Expose on a different port to avoid conflicts
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://ollama:11434}
+      - OCR_STRATEGY=${OCR_STRATEGY:-easyocr}
+      - DISABLE_LOCAL_OLLAMA=${DISABLE_LOCAL_OLLAMA:-0}
+    volumes:
+      - ./cache:/app/cache
+      - ./storage:/app/storage
+    depends_on:
+      - redis
+      - ollama
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6380:6379"  # Expose on a different port to avoid conflicts
+    volumes:
+      - redis_data:/data
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11435:11434"  # Expose on a different port to avoid conflicts
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  redis_data:
+  ollama_data:

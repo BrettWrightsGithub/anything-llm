@@ -1,0 +1,44 @@
+## Features:
+- No Cloud/external dependencies all you need: PyTorch based OCR (EasyOCR) + Ollama are shipped and configured via docker-compose no data is sent outside your dev/server environment,
+- PDF/Office to Markdown conversion with very high accuracy using different OCR strategies including llama3.2-vision, easyOCR, minicpm-v, remote URL strategies including [marker-pdf](https://github.com/VikParuchuri/marker)
+- PDF/Office to JSON conversion using Ollama supported models (eg. LLama 3.1)
+- LLM Improving OCR results LLama is pretty good with fixing spelling and text issues in the OCR text
+- Removing PII This tool can be used for removing Personally Identifiable Information out of document - see examples
+- Distributed queue processing using [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+- Caching using Redis - the OCR results can be easily cached prior to LLM processing,
+- Storage Strategies switchable storage strategies (Google Drive, Local File System ...)
+- CLI tool for sending tasks and processing results
+
+```
+docker-compose
+```
+
+[llama3.2-vision](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/)
+[easyOCR](https://github.com/JaidedAI/EasyOCR)
+[minicpm-v](https://github.com/OpenBMB/MiniCPM-o?tab=readme-ov-file)
+[marker-pdf](https://github.com/VikParuchuri/marker)
+
+```
+examples
+```
+
+[Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+
+## Screenshots
+Converting MRI report to Markdown + JSON.
+
+```
+python client/cli.py ocr_upload --file examples/example-mri.pdf --prompt_file examples/example-mri-2-json-prompt.txt
+```
+
+Before running the example see getting started
+Converting Invoice to JSON and remove PII
+
+```
+python client/cli.py ocr_upload --file examples/example-invoice.pdf --prompt_file examples/example-invoice-remove-pii.txt
+```
+
+Before running the example see getting started
+
+## Getting started
+You might want to run the app directly on your machine for development purposes OR to use for example Apple GPUs (which are not supported by Docker at the moment).
