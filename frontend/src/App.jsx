@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
 import { ContextWrapper } from "@/AuthContext";
@@ -17,6 +17,7 @@ import { PfpProvider } from "./PfpContext";
 import { LogoProvider } from "./LogoContext";
 import { FullScreenLoader } from "./components/Preloader";
 import { ThemeProvider } from "./ThemeContext";
+import { setupIOSViewport } from "./utils/viewport";
 
 const Main = lazy(() => import("@/pages/Main"));
 const InvitePage = lazy(() => import("@/pages/Invite"));
@@ -80,6 +81,10 @@ const CommunityHubImportItem = lazy(
 );
 
 export default function App() {
+  useEffect(() => {
+    setupIOSViewport();
+  }, []);
+
   return (
     <ThemeProvider>
       <Suspense fallback={<FullScreenLoader />}>
