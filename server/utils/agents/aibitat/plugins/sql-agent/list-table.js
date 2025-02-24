@@ -16,17 +16,16 @@ module.exports.SqlAgentListTables = {
             "List all available tables in a database via its `database_id`.",
           examples: [
             {
-              prompt: "What tables are there in the `access-logs` database?",
-              call: JSON.stringify({ database_id: "access-logs" }),
+              prompt: "What tables are there in the `secondbrain` database?",
+              call: JSON.stringify({ database_id: "secondbrain" }),
             },
             {
-              prompt:
-                "What information can you access in the customer_accts postgres db?",
-              call: JSON.stringify({ database_id: "customer_accts" }),
+              prompt: "What information can you access in the secondbrain postgres db?",
+              call: JSON.stringify({ database_id: "secondbrain" }),
             },
             {
-              prompt: "Can you tell me what is in the primary-logs db?",
-              call: JSON.stringify({ database_id: "primary-logs" }),
+              prompt: "Can you tell me what tables are in the secondbrain db?",
+              call: JSON.stringify({ database_id: "secondbrain" }),
             },
           ],
           parameters: {

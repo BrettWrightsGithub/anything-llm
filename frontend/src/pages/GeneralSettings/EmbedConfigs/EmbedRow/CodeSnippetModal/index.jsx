@@ -64,7 +64,7 @@ const ScriptTag = ({ embed }) => {
     ? "http://localhost:3000"
     : window.location.origin;
   const serverHost = import.meta.env.DEV
-    ? "http://localhost:3001"
+    ? "http://localhost:3101"
     : window.location.origin;
   const snippet = createScriptTagSnippet(embed, scriptHost, serverHost);
   const theme =

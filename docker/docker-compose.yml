@@ -22,7 +22,9 @@ services:
       - "../collector/outputs/:/app/collector/outputs"
     user: "${UID:-1000}:${GID:-1000}"
     ports:
-      - "3001:3001"
+      - "0.0.0.0:5901:3101"
+    environment:
+      - VITE_API_BASE=http://64.188.16.137:27646/api
     env_file:
       - .env
     networks:

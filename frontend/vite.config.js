@@ -18,7 +18,7 @@ export default defineConfig({
     format: 'es'
   },
   server: {
-    port: 3000,
+    port: 3201,
     host: "localhost"
   },
   define: {

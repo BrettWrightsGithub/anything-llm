@@ -37,6 +37,10 @@ const CommunityHub = {
   fetchExploreItems: async function () {
     return await fetch(`${this.apiBase}/explore`, {
       method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     })
       .then((response) => response.json())
       .catch((error) => {
