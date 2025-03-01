@@ -1,0 +1,149 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Health Profile",
+    "type": "object",
+    "properties": {
+      "person": {
+        "type": "object",
+        "properties": {
+          "person_id": { "type": "string", "format": "uuid" },
+          "first_name": { "type": "string" },
+          "last_name": { "type": "string" },
+          "date_of_birth": { "type": "string", "format": "date" },
+          "gender": { "type": "string", "enum": ["Male", "Female", "Other"] },
+          "blood_type": { "type": "string", "enum": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] },
+          "ethnicity": { "type": "string" },
+          "height_cm": { "type": "number" },
+          "weight_kg": { "type": "number" },
+          "primary_care_provider": { "type": "string" },
+          "created_at": { "type": "string", "format": "date-time" }
+        },
+        "required": ["person_id", "first_name", "last_name", "date_of_birth", "gender"]
+      },
+      "medical_history": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "history_id": { "type": "string", "format": "uuid" },
+            "condition_name": { "type": "string" },
+            "diagnosis_date": { "type": "string", "format": "date" },
+            "resolution_date": { "type": ["string", "null"], "format": "date" },
+            "severity": { "type": "string", "enum": ["Mild", "Moderate", "Severe", "Critical"] },
+            "notes": { "type": "string" }
+          },
+          "required": ["history_id", "condition_name", "diagnosis_date"]
+        }
+      },
+      "medications": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "medication_id": { "type": "string", "format": "uuid" },
+            "medication_name": { "type": "string" },
+            "dosage": { "type": "string" },
+            "frequency": { "type": "string" },
+            "start_date": { "type": "string", "format": "date" },
+            "end_date": { "type": ["string", "null"], "format": "date" },
+            "prescribing_physician": { "type": "string" },
+            "notes": { "type": "string" }
+          },
+          "required": ["medication_id", "medication_name", "dosage", "frequency", "start_date"]
+        }
+      },
+      "allergies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "allergy_id": { "type": "string", "format": "uuid" },
+            "allergen": { "type": "string" },
+            "reaction": { "type": "string" },
+            "severity": { "type": "string", "enum": ["Mild", "Moderate", "Severe", "Anaphylactic"] },
+            "notes": { "type": "string" }
+          },
+          "required": ["allergy_id", "allergen", "reaction", "severity"]
+        }
+      },
+      "lifestyle_factors": {
+        "type": "object",
+        "properties": {
+          "diet_type": { "type": "string" },
+          "smoking_status": { "type": "boolean" },
+          "alcohol_consumption": { "type": "string", "enum": ["None", "Occasional", "Frequent"] },
+          "caffeine_intake": { "type": "string", "enum": ["Low", "Moderate", "High"] },
+          "average_sleep_hours": { "type": "number" },
+          "exercise_frequency": { "type": "string" },
+          "stress_level": { "type": "string", "enum": ["Low", "Moderate", "High"] }
+        }
+      },
+      "vitals": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "vital_id": { "type": "string", "format": "uuid" },
+            "measurement_time": { "type": "string", "format": "date-time" },
+            "blood_pressure": { "type": "string" },
+            "heart_rate": { "type": "integer" },
+            "temperature": { "type": "number" },
+            "oxygen_saturation": { "type": "number" },
+            "respiratory_rate": { "type": "integer" },
+            "glucose_level": { "type": "number" },
+            "notes": { "type": "string" }
+          },
+          "required": ["vital_id", "measurement_time", "heart_rate", "temperature"]
+        }
+      },
+      "lab_results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "lab_id": { "type": "string", "format": "uuid" },
+            "test_name": { "type": "string" },
+            "test_date": { "type": "string", "format": "date" },
+            "result_value": { "type": "string" },
+            "normal_range": { "type": "string" },
+            "unit": { "type": "string" },
+            "ordering_physician": { "type": "string" },
+            "notes": { "type": "string" }
+          },
+          "required": ["lab_id", "test_name", "test_date"]
+        }
+      },
+      "appointments": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "appointment_id": { "type": "string", "format": "uuid" },
+            "appointment_date": { "type": "string", "format": "date-time" },
+            "provider": { "type": "string" },
+            "reason": { "type": "string" },
+            "notes": { "type": "string" },
+            "follow_up_required": { "type": "boolean" },
+            "follow_up_date": { "type": ["string", "null"], "format": "date" }
+          },
+          "required": ["appointment_id", "appointment_date", "provider", "reason"]
+        }
+      },
+      "immunizations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "immunization_id": { "type": "string", "format": "uuid" },
+            "vaccine_name": { "type": "string" },
+            "date_administered": { "type": "string", "format": "date" },
+            "dose_number": { "type": "integer" },
+            "administered_by": { "type": "string" },
+            "notes": { "type": "string" }
+          },
+          "required": ["immunization_id", "vaccine_name", "date_administered", "dose_number"]
+        }
+      }
+    },
+    "required": ["person"]
+  }
